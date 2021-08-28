@@ -2,7 +2,7 @@
 <resources>
 
     <style name="KindaSquircle">
-
+        <item name="cornerSize">20%</item>
     </style>
 
 </resources>

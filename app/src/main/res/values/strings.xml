@@ -11,4 +11,6 @@
     <string name="latitude_longitude">Latitude / Longitude</string>
     <string name="lat_lon">Lat / Lon</string>
     <string name="send">Send!</string>
+    <string name="send_location_button">send location button</string>
+    <string name="weather_icon">weather icon</string>
 </resources>

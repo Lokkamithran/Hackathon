@@ -8,14 +8,16 @@
     android:orientation="vertical">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/sendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:id="@+id/sendButton"
-        android:src="@drawable/ic_send"/>
+        android:contentDescription="@string/send_location_button"
+        android:src="@drawable/ic_send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="RedundantDescriptionCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,17 +46,33 @@
                 android:layout_marginBottom="8dp"
                 android:paddingBottom="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/currentlyText"
-                    android:text="@string/currently"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:padding="8dp"
-                    android:layout_gravity="start|top"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/currentlyText"
+                        android:text="@string/currently"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:padding="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/weatherIcon"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginStart="16dp"
+                        android:contentDescription="@string/weather_icon"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="40dp"
+                        app:shapeAppearanceOverlay="@style/KindaSquircle"/>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -108,7 +126,8 @@
                     android:textSize="16sp"
                     android:padding="8dp"
                     android:gravity="center"
-                    android:layout_marginStart="8dp" />
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -162,9 +181,8 @@
             android:layout_marginEnd="16dp">
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_weight="1"
                 app:cardPreventCornerOverlap="true"
                 app:cardMaxElevation="10dp"
                 app:cardElevation="8dp"
@@ -175,7 +193,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="8dp"
+                    android:paddingBottom="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -236,8 +255,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardMaxElevation="10dp"
@@ -249,7 +267,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="8dp"
+                    android:paddingBottom="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
