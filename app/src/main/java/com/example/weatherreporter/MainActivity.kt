@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        enableLoc()
+        //enableLoc()
         getLoc()
         val runnable = Runnable {
             if(mLatitude!="" && mLongitude!="")
@@ -70,6 +70,8 @@ class MainActivity : AppCompatActivity() {
         }
         Handler(Looper.getMainLooper()).postDelayed(runnable, 2000)
         sendButton.setOnClickListener{
+            //enableLoc()
+            getLoc()
             if(mLatitude!="" && mLongitude!="")
                 retrieveImages()
             else
@@ -110,10 +112,10 @@ class MainActivity : AppCompatActivity() {
             if(it!=null){
                 mLatitude = it.latitude.toString()
                 mLongitude = it.longitude.toString()
-                Toast.makeText(this, "$mLatitude, $mLongitude", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "$mLatitude, $mLongitude", Toast.LENGTH_LONG).show()
                 Log.d("mainActivity", "$mLatitude, $mLongitude")
             }else{
-                Toast.makeText(this, "Error: Location not received:(", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error: Location not accessible", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -156,48 +158,48 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
     }
-    private fun enableLoc() {
-        if (googleApiClient == null) {
-            googleApiClient = GoogleApiClient.Builder(this)
-                .addApi(LocationServices.API)
-                .addConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
-                    override fun onConnected(bundle: Bundle?) {}
-                    override fun onConnectionSuspended(i: Int) {
-                        googleApiClient!!.connect()
-                    }
-                })
-                .addOnConnectionFailedListener { connectionResult ->
-                    Log.d(
-                        "Location error",
-                        "Location error " + connectionResult.errorCode
-                    )
-                }.build()
-            googleApiClient!!.connect()
-            val locationRequest = LocationRequest.create()
-            locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            locationRequest.interval = (30 * 1000).toLong()
-            locationRequest.fastestInterval = (5 * 1000).toLong()
-            val builder = LocationSettingsRequest.Builder()
-                .addLocationRequest(locationRequest)
-            builder.setAlwaysShow(true)
-            val result =
-                LocationServices.SettingsApi.checkLocationSettings(googleApiClient!!, builder.build())
-            result.setResultCallback { result ->
-                val status = result.status
-                when (status.statusCode) {
-                    LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
-                        // Show the dialog by calling startResolutionForResult(),
-                        // and check the result in onActivityResult().
-                        status.startResolutionForResult(this, REQUEST_LOCATION)
-
-                        //                                finish();
-                    } catch (e: SendIntentException) {
-                        // Ignore the error.
-                    }
-                }
-            }
-        }
-    }
+//    private fun enableLoc() {
+//        if (googleApiClient == null) {
+//            googleApiClient = GoogleApiClient.Builder(this)
+//                .addApi(LocationServices.API)
+//                .addConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
+//                    override fun onConnected(bundle: Bundle?) {}
+//                    override fun onConnectionSuspended(i: Int) {
+//                        googleApiClient!!.connect()
+//                    }
+//                })
+//                .addOnConnectionFailedListener { connectionResult ->
+//                    Log.d(
+//                        "Location error",
+//                        "Location error " + connectionResult.errorCode
+//                    )
+//                }.build()
+//            googleApiClient!!.connect()
+//            val locationRequest = LocationRequest.create()
+//            locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+//            locationRequest.interval = (30 * 1000).toLong()
+//            locationRequest.fastestInterval = (5 * 1000).toLong()
+//            val builder = LocationSettingsRequest.Builder()
+//                .addLocationRequest(locationRequest)
+//            builder.setAlwaysShow(true)
+//            val result =
+//                LocationServices.SettingsApi.checkLocationSettings(googleApiClient!!, builder.build())
+//            result.setResultCallback { result ->
+//                val status = result.status
+//                when (status.statusCode) {
+//                    LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
+//                        // Show the dialog by calling startResolutionForResult(),
+//                        // and check the result in onActivityResult().
+//                        status.startResolutionForResult(this, REQUEST_LOCATION)
+//
+//                        //                                finish();
+//                    } catch (e: SendIntentException) {
+//                        // Ignore the error.
+//                    }
+//                }
+//            }
+//        }
+//    }
     private fun retrieveImages(){
         val mainActivityJob = Job()
 
