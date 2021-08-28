@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="currently">Currently</string>
+    <string name="wind">Wind</string>
+    <string name="pressure">Pressure</string>
+    <string name="humidity">Humidity</string>
+    <string name="no_data">No Data</string>
+    <string name="temperature">Temperature</string>
+    <string name="min_max">Min / Max</string>
+    <string name="location">Location</string>
+    <string name="latitude_longitude">Latitude / Longitude</string>
+    <string name="lat_lon">Lat / Lon</string>
+    <string name="send">Send!</string>
+</resources>
